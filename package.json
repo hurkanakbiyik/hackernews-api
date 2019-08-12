@@ -15,6 +15,7 @@
     "async": "^2.6.2"
   },
   "devDependencies": {
+    "bluebird": "^3.5.5",
     "chai": "^4.2.0",
     "eslint": "^5.10.0",
     "eslint-config-bestseller": "^1.1.15",
