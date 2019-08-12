@@ -1,0 +1,15 @@
+{
+  "extends": "bestseller/dmw",
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+
+  "rules": {
+    "new-cap": 0,
+    "max-depth": [2, 8]
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017
+  }
+}

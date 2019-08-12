@@ -1,0 +1,29 @@
+{
+  "name": "hackernews-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node %NODE_DEBUG_OPTION% main.js",
+    "test": "nyc mocha ./services/**/*.test.js",
+    "test:report": "npm run test && nyc report --reporter=html"
+  },
+  "author": "hurkanakbiyik@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.65.0",
+    "async": "^2.6.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.10.0",
+    "eslint-config-bestseller": "^1.1.15",
+    "eslint-teamcity": "^2.1.0",
+    "express": "^4.17.1",
+    "mocha": "^5.2.0",
+    "nyc": "^13.3.0",
+    "proxyquire": "^2.1.0",
+    "sinon": "^7.2.2",
+    "sinon-chai": "^3.3.0"
+  }
+}
