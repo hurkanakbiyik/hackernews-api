@@ -6,7 +6,7 @@ This project created to serve these endpoints. After run the application you can
 
 Top 10 most occurring words in the titles of the last 25 stories
 
-**/commonWordsLastWeek**
+**/commonWordsLastWeekPost**
 
 Top 10 most occurring words in a post of exactly the last week (if today is Monday, a post of Monday
 last week)

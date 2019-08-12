@@ -1,4 +1,4 @@
-const {fetchNewStories, fetchItem} = require('./services/hackernews/hackernews.service');
+const {fetchNewStories, fetchItem, fetchMaxItem, findAPostFromADay, getFormattedDate} = require('./services/hackernews/hackernews.service');
 const Promise = require('bluebird');
 const express = require('express');
 const {mapWordCounts, getListOfOrderedWordCounts} = require('./services/word/word.service');
@@ -20,7 +20,25 @@ app.get('/commonWords', async(req, res) =>{
     );
     const topWords = getListOfOrderedWordCounts(wordsCount).slice(0, 10);
     res.send({
-        data: topWords
+        data: topWords,
+    });
+});
+
+app.get('/commonWordsLastWeekPost', async(req, res) =>{
+    const maxItemResult = await fetchMaxItem();
+    const maxItem = maxItemResult.data;
+    const currentDate = new Date();
+    const pastDate = currentDate.getDate() - 7;
+    currentDate.setDate(pastDate);
+    const postResult = await findAPostFromADay(currentDate.getTime(), maxItem / 2, maxItem);
+
+    res.send({
+        data: {
+            post: postResult.data,
+            lastWeekDate: getFormattedDate(currentDate),
+            storyDate: getFormattedDate(new Date(postResult.data.time * 1000)),
+            wordsCount: getListOfOrderedWordCounts(mapWordCounts([postResult.data.title]))
+        },
     });
 });
 
