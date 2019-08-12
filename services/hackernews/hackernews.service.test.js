@@ -5,7 +5,7 @@ chai.use(sinonChai);
 chai.config.includeStack = true;
 const { expect } = chai;
 
-const {fetchNewStories, fetchItem, fetchUser} = require('./hackernews.service');
+const {fetchNewStories, fetchItem, fetchUser, findAPostFromADay} = require('./hackernews.service');
 
 describe('# [service] hackernews.service', () => {
     describe('## [function] fetchNewStories', async() => {
@@ -44,6 +44,16 @@ describe('# [service] hackernews.service', () => {
                 expect(e.message).to.equal('There is no user to fetch');
                 done();
             }
+        });
+    });
+
+    describe('## [function] findAPostFromADay', async() => {
+        it('should not return a story', async() => {
+            const currentDate = new Date();
+            const pastDate = currentDate.getDate() - 7;
+            currentDate.setDate(pastDate);
+            const itemResult = await findAPostFromADay(currentDate.getTime(), 1, 5);
+            expect(itemResult).to.equal(false);
         });
     });
 });

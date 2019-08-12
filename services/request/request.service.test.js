@@ -20,12 +20,6 @@ describe('# [service] request.service', () => {
             }
         });
 
-        it('should return data with correct url', async() => {
-            const result = await callRequest({ url: 'http://example.org'});
-            expect(result.status).to.equal(0);
-            expect(result.data.length).to.above(1);
-        });
-
         it('should return json data', async() => {
             const options = {
                 method: 'GET',
@@ -33,8 +27,7 @@ describe('# [service] request.service', () => {
             };
             const result = await callRequest(options);
             expect(result.status).to.equal(0);
-            const dataObj = JSON.parse(result.data);
-            expect(dataObj).to.deep.eql({
+            expect(result.data).to.deep.eql({
                 userId: 1,
                 id: 1,
                 title: 'delectus aut autem',
