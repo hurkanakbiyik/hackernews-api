@@ -15,7 +15,7 @@ function callRequest(options) {
                 resolve({
                     status: 0,
                     error: false,
-                    data: body
+                    data: JSON.parse(body)
                 });
             }
         });

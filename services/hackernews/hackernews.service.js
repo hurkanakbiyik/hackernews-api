@@ -8,4 +8,14 @@ function fetchNewStories() {
     });
 }
 
-module.exports = { fetchNewStories };
+function fetchItem(itemId) {
+    if (!itemId) {
+        throw new Error('There is no itemId to fetch');
+    }
+    return requestService.callRequest({
+        method: 'GET',
+        url: `${API_URL}item/${itemId}.json`,
+    });
+}
+
+module.exports = { fetchNewStories, fetchItem };
