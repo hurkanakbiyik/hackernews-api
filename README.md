@@ -1,6 +1,6 @@
 # Hackernews API
 
-This project created to serve these endpoints.
+This project created to serve these endpoints. After run the application you can check server from http://localhost:3000/health
 
 **/commonWords**
 
