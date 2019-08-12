@@ -5,7 +5,7 @@ chai.use(sinonChai);
 chai.config.includeStack = true;
 const { expect } = chai;
 
-const {fetchNewStories, fetchItem} = require('./hackernews.service');
+const {fetchNewStories, fetchItem, fetchUser} = require('./hackernews.service');
 
 describe('# [service] hackernews.service', () => {
     describe('## [function] fetchNewStories', async() => {
@@ -16,16 +16,32 @@ describe('# [service] hackernews.service', () => {
     });
 
     describe('## [function] fetchItem', async() => {
-        it('should return new stories', async() => {
+        it('should return item', async() => {
             const itemResult = await fetchItem(20673328);
             expect(itemResult.data.id).to.equal(20673328);
         });
 
-        it('should throw error withoyt itemId', async(done) => {
+        it('should throw error without itemId', async(done) => {
             try {
                 await fetchItem();
             } catch (e) {
                 expect(e.message).to.equal('There is no itemId to fetch');
+                done();
+            }
+        });
+    });
+
+    describe('## [function] fetchUser', async() => {
+        it('should return new stories', async() => {
+            const itemResult = await fetchUser('jl');
+            expect(itemResult.data.id).to.equal('jl');
+        });
+
+        it('should throw error without userId', async(done) => {
+            try {
+                await fetchUser();
+            } catch (e) {
+                expect(e.message).to.equal('There is no user to fetch');
                 done();
             }
         });

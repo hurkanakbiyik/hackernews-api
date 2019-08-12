@@ -18,4 +18,14 @@ function fetchItem(itemId) {
     });
 }
 
-module.exports = { fetchNewStories, fetchItem };
+function fetchUser(user) {
+    if (!user) {
+        throw new Error('There is no user to fetch');
+    }
+    return requestService.callRequest({
+        method: 'GET',
+        url: `${API_URL}user/${user}.json`,
+    });
+}
+
+module.exports = { fetchNewStories, fetchItem, fetchUser };
