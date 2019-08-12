@@ -19,4 +19,10 @@ function mapWordCounts(textList) {
     return wordMap;
 }
 
-module.exports = {mapWordCounts};
+function getListOfOrderedWordCounts(wordMap) {
+    return Object.keys(wordMap)
+        .map(key => ({key: key, value: wordMap[key]}))
+        .sort((word1, word2) => word2.value - word1.value);
+}
+
+module.exports = {getListOfOrderedWordCounts, mapWordCounts};
