@@ -2,7 +2,7 @@
   "extends": "bestseller/dmw",
   "env": {
     "node": true,
-    "mocha": true
+    "mocha": false
   },
 
   "rules": {
